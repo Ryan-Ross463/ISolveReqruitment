@@ -1,21 +1,27 @@
-# Environment files
+# Environment variables
 .env
 *.env
+
+
+# Java
+backend/target/
+*.class
+
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
 
 # IDE
 .vscode/
 .idea/
 
-# Java
-target/
-*.class
 
-# Node
-node_modules/
-dist/
-
-# Logs
-*.log
-
-# Docker
-docker-data/
+# OS
+.DS_Store
+Thumbs.db
