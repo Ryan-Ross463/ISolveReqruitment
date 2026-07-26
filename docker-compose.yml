@@ -1,0 +1,53 @@
+services:
+
+  postgres:
+
+    image: postgres:16.3
+
+    container_name: isolve-postgres
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    expose:
+      - "5432"
+
+    volumes:
+
+      - isolve-postgres-data:/var/lib/postgresql/data
+
+    networks:
+
+      - isolve-network
+
+    healthcheck:
+
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER}"
+        ]
+
+      interval: 10s
+
+      timeout: 5s
+
+      retries: 5
+
+    security_opt:
+
+      - no-new-privileges:true
+
+
+volumes:
+
+  isolve-postgres-data:
+
+
+networks:
+
+  isolve-network:
+
+    driver: bridge

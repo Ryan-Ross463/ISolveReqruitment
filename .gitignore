@@ -1,0 +1,21 @@
+# Environment files
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+
+# Java
+target/
+*.class
+
+# Node
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# Docker
+docker-data/
