@@ -3,7 +3,7 @@ import Hero from "../components/hero/Hero";
 import DualPathways from "../components/sections/DualPathways";
 import FeaturedJobs from "../components/sections/FeaturedJobs";
 import BoutiqueAdvantage from "../components/sections/BoutiqueAdvantage";
-import Footer from "../components/layout/footer";
+import Footer from "../components/layout/Footer";
 
 const Home = () => {
   return (
