@@ -1,37 +1,39 @@
 import heroImage from "../../assets/images/hero-professionals.jpg";
 
-
 const HeroImage = () => {
   return (
-    <div className="relative">
+    <div className="relative mt-6 lg:mt-0">
 
       {/* Glow background */}
       <div
         className="
           absolute
-          -inset-6
+          -inset-3
+          sm:-inset-6
           rounded-3xl
           bg-[var(--color-gray-slate)]/10
-          blur-3xl
+          blur-2xl
+          sm:blur-3xl
         "
       />
-
 
       {/* Image container */}
       <div
         className="
           relative
           overflow-hidden
-          rounded-3xl
+          rounded-2xl
+          sm:rounded-3xl
           shadow-[var(--shadow-md)]
         "
       >
-
         <img
           src={heroImage}
           alt="Professional recruitment team"
           className="
-            h-[600px]
+            h-[320px]
+            sm:h-[450px]
+            lg:h-[600px]
             w-full
             object-cover
             transition
@@ -41,7 +43,6 @@ const HeroImage = () => {
           "
         />
 
-
         {/* Navy overlay */}
         <div
           className="
@@ -50,38 +51,37 @@ const HeroImage = () => {
             bg-[var(--color-gray-slate)]/15
           "
         />
-
       </div>
-
 
       {/* Floating connection card */}
       <div
         className="
           absolute
-          -bottom-6
-          -left-6
+          -bottom-4
+          left-4
+          sm:-bottom-6
+          sm:-left-6
+          z-10
+          max-w-[calc(100%-2rem)]
           rounded-xl
           bg-white
-          px-6
-          py-4
+          p-4
+          sm:px-6
+          sm:py-4
           shadow-[var(--shadow-md)]
         "
       >
-
-        <p className="text-sm font-semibold text-[var(--color-gray-slate)]">
+        <p className="text-xs font-semibold text-[var(--color-gray-slate)] sm:text-sm">
           Connected Talent Network
         </p>
 
-        <p className="mt-1 text-xs text-[var(--color-black-deep)]">
+        <p className="mt-0.5 text-[10px] text-[var(--color-black-deep)] sm:mt-1 sm:text-xs">
           Companies ↔ Candidates ↔ Opportunities
         </p>
-
       </div>
-
 
     </div>
   );
 };
-
 
 export default HeroImage;

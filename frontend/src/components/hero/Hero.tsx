@@ -1,4 +1,3 @@
-import NetworkBackground from "./NetworkBackground";
 import HeroImage from "./HeroImage";
 
 const Hero = () => {
@@ -6,7 +5,6 @@ const Hero = () => {
     <section className="relative overflow-hidden bg-[var(--color-gray-light)]">
 
       {/* Animated Network */}
-      <NetworkBackground />
 
 
       <div className="relative mx-auto grid min-h-screen max-w-[1700px] items-center gap-12 px-6 lg:grid-cols-2 lg:px-8">
