@@ -1,80 +1,61 @@
-const nodes = [
-  { x: "15%", y: "25%" },
-  { x: "35%", y: "45%" },
-  { x: "55%", y: "20%" },
-  { x: "75%", y: "35%" },
-  { x: "25%", y: "75%" },
-  { x: "65%", y: "70%" },
-];
-
+import { useCallback } from "react";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 
 const NetworkBackground = () => {
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
+
   return (
-    <div className="pointer-events-none absolute inset-0 opacity-30">
-
-      <svg className="h-full w-full">
-
-        {/* Connections */}
-        <line
-          x1="15%"
-          y1="25%"
-          x2="35%"
-          y2="45%"
-          stroke="var(--color-green-forest)"
-          strokeWidth="1"
-        />
-
-        <line
-          x1="35%"
-          y1="45%"
-          x2="55%"
-          y2="20%"
-          stroke="var(--color-green-forest)"
-          strokeWidth="1"
-        />
-
-
-        <line
-          x1="55%"
-          y1="20%"
-          x2="75%"
-          y2="35%"
-          stroke="var(--color-green-forest)"
-          strokeWidth="1"
-        />
-
-
-        <line
-          x1="25%"
-          y1="75%"
-          x2="65%"
-          y2="70%"
-          stroke="var(--color-green-forest)"
-          strokeWidth="1"
-        />
-
-
-      </svg>
-
-
-      {nodes.map((node, index) => (
-        <span
-          key={index}
-          className="
-            absolute
-            h-3
-            w-3
-            rounded-full
-            bg-[var(--color-green-forest)]
-            animate-pulse
-          "
-          style={{
-            left: node.x,
-            top: node.y,
+    <div className="absolute inset-0 z-0 pointer-events-none">
+      <ParticlesProvider init={particlesInit}>
+        <Particles
+          id="tsparticles"
+          className="h-full w-full"
+          options={{
+            fullScreen: { enable: false },
+            fpsLimit: 60,
+            particles: {
+              color: { value: "#D4AF37" },
+              links: {
+                color: "#D4AF37",
+                distance: 250,
+                enable: true,
+                opacity: 0.15,
+                width: 1,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: { default: "bounce" },
+                random: true,
+                speed: 0.4,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  width: 1920,
+                  height: 1080,
+                },
+                value: 35,
+              },
+              opacity: {
+                value: { min: 0.1, max: 0.5 },
+                animation: {
+                  enable: true,
+                  speed: 0.5,
+                  sync: false,
+                },
+              },
+              size: { value: { min: 1, max: 3 } },
+            },
+            detectRetina: true,
           }}
         />
-      ))}
-
+      </ParticlesProvider>
     </div>
   );
 };
