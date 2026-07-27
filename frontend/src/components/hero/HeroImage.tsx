@@ -11,15 +11,15 @@ const HeroImage = () => {
         <img
           src={heroImage}
           alt="Professional recruitment team"
-          className="h-[320px] sm:h-[450px] lg:h-[600px] w-full object-cover transition duration-[3000ms] ease-in-out hover:scale-105"
+          className="h-[320px] sm:h-[450px] lg:h-[600px] w-full object-cover"
         />
 
-        {/* Navy overlay */}
+        {/* Navy overlay — FIXED: Added inset-0 so it fills the image */}
         <div className="absolute inset-0 bg-gray-slate/15" />
       </div>
 
-      {/* Floating connection card */}
-      <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 z-10 max-w-[calc(100%-2rem)] rounded-xl bg-white p-4 sm:px-6 sm:py-4 shadow-md">
+      {/* Floating connection card — FIXED: Simplified p-4 sm:px-6 */}
+      <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 z-10 max-w-[calc(100%-2rem)] rounded-xl bg-white p-4 sm:px-6 shadow-md">
         <p className="text-xs font-semibold text-gray-slate sm:text-sm">
           Connected Talent Network
         </p>

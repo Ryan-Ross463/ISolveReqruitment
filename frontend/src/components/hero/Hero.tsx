@@ -3,7 +3,8 @@ import HeroImage from "./HeroImage";
 const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gray-light py-16 lg:py-24">
-      <div className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-[1700px] items-center gap-12 px-6 lg:grid-cols-2 lg:px-8">
+      {/* Removed unnecessary 'relative' from grid container */}
+      <div className="mx-auto grid max-w-[1700px] items-center gap-12 px-6 lg:grid-cols-2 lg:px-8">
 
         {/* Content */}
         <div className="relative z-10 max-w-xl">

@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="mx-auto flex h-20 max-w-[1700px] items-center justify-between px-6 lg:px-8">
 
         {/* Logo */}
-        <a href="/" className="flex items-center gap-1 sm:gap-1.5 cursor-pointer group">
+        <a href="/" className="flex items-center gap-1 sm:gap-1.5 group">
           
           {/* Custom 'i' Icon */}
           <svg 
@@ -38,7 +38,7 @@ const Navbar = () => {
             {/* Bottom Wedge (Gold/Sage) */}
             <path 
               d="M0 80 L20 60 V98 C20 102.5 16.5 106 12 106 H0 Z" 
-              fill="var(--color-green-sage)" 
+              className="fill-green-sage" 
             />
           </svg>
 
@@ -53,20 +53,20 @@ const Navbar = () => {
           </div>
         </a>
 
-        {/* Navigation Links with Left-to-Right Animated Underline */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden items-center gap-8 lg:flex">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="relative text-base font-medium text-charcoal transition-colors duration-200 hover:text-gray-slate cursor-pointer py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-base font-medium text-charcoal transition-colors duration-200 hover:text-gray-slate py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        {/* CTA */}
+        {/* Desktop CTAs */}
         <div className="hidden items-center gap-4 lg:flex">
           <button className="rounded-lg border border-gray-slate px-5 py-2.5 font-medium text-gray-slate transition hover:bg-gray-slate hover:text-white cursor-pointer">
             Search Jobs
@@ -80,12 +80,39 @@ const Navbar = () => {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-slate lg:hidden cursor-pointer"
-          aria-label="Open navigation menu"
+          aria-label="Toggle navigation menu"
         >
-          ☰
+          {mobileMenuOpen ? "✕" : "☰"}
         </button>
 
       </div>
+
+      {/* Mobile Navigation Dropdown */}
+      {mobileMenuOpen && (
+        <div className="border-b border-gray-medium bg-cream px-6 py-6 lg:hidden">
+          <div className="flex flex-col gap-4">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="relative w-fit text-lg font-medium text-charcoal transition-colors duration-200 hover:text-gray-slate py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {item.name}
+              </a>
+            ))}
+
+            <div className="mt-4 flex flex-col gap-3 pt-4 border-t border-gray-medium">
+              <button className="w-full rounded-lg border border-gray-slate py-2.5 font-medium text-gray-slate transition hover:bg-gray-slate hover:text-white cursor-pointer">
+                Search Jobs
+              </button>
+              <button className="w-full rounded-lg bg-green-sage py-2.5 font-medium text-white transition hover:opacity-90 cursor-pointer">
+                Find Talent
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
