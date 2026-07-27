@@ -5,11 +5,10 @@ const Navbar = () => {
 
   const navigation = [
     { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Employers", href: "/employers" },
     { name: "Candidates", href: "/candidates" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Insights", href: "/insights" },
+    { name: "Jobs", href: "/jobs" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -17,7 +16,7 @@ const Navbar = () => {
     <header className="fixed top-0 z-50 w-full border-b border-gray-medium bg-cream">
       <div className="mx-auto flex h-20 max-w-[1700px] items-center justify-between px-6 lg:px-8">
 
-        {/* Logo - Thinner weights applied */}
+        {/* Logo */}
         <a href="/" className="flex items-center gap-1 sm:gap-1.5 cursor-pointer group">
           
           {/* Custom 'i' Icon */}
@@ -36,14 +35,14 @@ const Navbar = () => {
               className="fill-gray-slate" 
             />
             
-            {/* Bottom Wedge (Gold) */}
+            {/* Bottom Wedge (Gold/Sage) */}
             <path 
               d="M0 80 L20 60 V98 C20 102.5 16.5 106 12 106 H0 Z" 
               fill="var(--color-green-sage)" 
             />
           </svg>
 
-          {/* Text Group - Dialed back to semibold and normal */}
+          {/* Text Group */}
           <div className="flex flex-col justify-center pt-1.5">
             <span className="text-[36px] sm:text-[42px] font-semibold leading-[0.8] tracking-tight text-gray-slate">
               solve
@@ -54,13 +53,13 @@ const Navbar = () => {
           </div>
         </a>
 
-        {/* Navigation */}
+        {/* Navigation Links with Left-to-Right Animated Underline */}
         <nav className="hidden items-center gap-8 lg:flex">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-charcoal transition hover:text-green-sage cursor-pointer"
+              className="relative text-base font-medium text-charcoal transition-colors duration-200 hover:text-gray-slate cursor-pointer py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.name}
             </a>
