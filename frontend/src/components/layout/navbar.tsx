@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Prevent background scrolling on body when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileMenuOpen]);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -76,10 +85,10 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-slate lg:hidden cursor-pointer"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-2xl text-gray-slate lg:hidden cursor-pointer"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? "✕" : "☰"}
@@ -87,30 +96,40 @@ const Navbar = () => {
 
       </div>
 
-      {/* Mobile Navigation Dropdown */}
+      {/* Full-Screen Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="border-b border-gray-medium bg-cream px-6 py-6 lg:hidden">
-          <div className="flex flex-col gap-4">
+        <div className="fixed inset-x-0 top-20 h-[calc(100vh-5rem)] bg-cream px-6 py-8 lg:hidden z-50 overflow-y-auto flex flex-col justify-between">
+          
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-6">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="relative w-fit text-lg font-medium text-charcoal transition-colors duration-200 hover:text-gray-slate py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
+                className="relative w-fit text-2xl font-semibold text-gray-slate py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-sage after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </a>
             ))}
-
-            <div className="mt-4 flex flex-col gap-3 pt-4 border-t border-gray-medium">
-              <button className="w-full rounded-lg border border-gray-slate py-2.5 font-medium text-gray-slate transition hover:bg-gray-slate hover:text-white cursor-pointer">
-                Search Jobs
-              </button>
-              <button className="w-full rounded-lg bg-green-sage py-2.5 font-medium text-white transition hover:opacity-90 cursor-pointer">
-                Find Talent
-              </button>
-            </div>
           </div>
+
+          {/* Bottom Action Buttons */}
+          <div className="flex flex-col gap-3 pt-6 border-t border-gray-medium mb-8">
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full rounded-lg bg-green-sage py-3.5 text-base font-medium text-white transition hover:opacity-90 cursor-pointer shadow-sm"
+            >
+              Find Talent
+            </button>
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full rounded-lg border border-gray-slate py-3.5 text-base font-medium text-gray-slate transition hover:bg-gray-slate hover:text-white cursor-pointer"
+            >
+              Search Jobs
+            </button>
+          </div>
+
         </div>
       )}
     </header>
