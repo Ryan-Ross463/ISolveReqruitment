@@ -36,15 +36,24 @@ const DualPathways = () => {
                 Partner directly with a dedicated recruitment specialist. We take the time to understand your company culture, technical requirements, and long-term vision.
               </p>
 
-              <ul className="mt-6 space-y-2.5 text-sm font-medium text-charcoal">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Direct founder partnership & single point of contact
+              <ul className="mt-6 space-y-3 text-sm font-medium text-charcoal">
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Direct founder partnership & single point of contact</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Rigorous, pre-vetted candidate shortlists
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Rigorous, pre-vetted candidate shortlists</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Tailored executive & specialist search
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Tailored executive & specialist search</span>
                 </li>
               </ul>
             </div>
@@ -79,15 +88,24 @@ const DualPathways = () => {
                 Explore curated opportunities with leading organizations. We support you through every stage from portfolio review to salary negotiation.
               </p>
 
-              <ul className="mt-6 space-y-2.5 text-sm font-medium text-charcoal">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Confidential job matching & guidance
+              <ul className="mt-6 space-y-3 text-sm font-medium text-charcoal">
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Confidential job matching & guidance</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Direct access to hiring managers
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Direct access to hiring managers</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-sage">✓</span> Interview prep & offer negotiation support
+                <li className="flex items-center gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-green-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Interview prep & offer negotiation support</span>
                 </li>
               </ul>
             </div>
