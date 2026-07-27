@@ -10,7 +10,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed w-full z-1 border-b border-[var(--color-gray-medium)] bg-[var(--color-cream)]/90">
+    <header className="fixed top-0 z-50 w-full border-b border-[var(--color-gray-medium)] bg-[var(--color-cream)]">
       <div className="mx-auto flex h-20 max-w-[1700px] items-center justify-between px-6 lg:px-8">
 
         {/* Logo */}
