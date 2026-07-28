@@ -10,13 +10,15 @@ interface CompanyStats {
   partnershipModel: string;
 }
 
-const AboutPage = () => {
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+
+const AboutPage: React.FC = () => {
   const [stats, setStats] = useState<CompanyStats | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Fetch data from your Java Spring Boot backend endpoint
-    fetch('http://localhost:8080/api/about/stats')
+    fetch(`${API_BASE_URL}/api/about/stats`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch company stats');
@@ -35,7 +37,6 @@ const AboutPage = () => {
 
   return (
     <div className="bg-cream text-charcoal min-h-screen flex flex-col">
-      
       {/* Top Navigation */}
       <Navbar />
 
@@ -141,7 +142,6 @@ const AboutPage = () => {
 
       {/* Footer */}
       <Footer />
-
     </div>
   );
 };
