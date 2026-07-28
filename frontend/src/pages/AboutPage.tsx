@@ -105,31 +105,36 @@ const AboutPage = () => {
 
         {/* Stats / Impact Bar (Dynamically populated from Spring Boot) */}
         <section className="border-t border-gray-medium px-6 py-16 lg:px-8 bg-cream">
-          <div className="mx-auto max-w-[1700px] grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="mx-auto max-w-[1700px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            
             <div className="p-6">
-              <p className="text-3xl lg:text-4xl font-bold text-gray-slate truncate">
+              <p className="text-2xl lg:text-3xl font-bold text-gray-slate min-h-[2.5rem] flex items-center justify-center">
                 {loading ? "..." : stats?.popiaCompliance}
               </p>
-              <p className="mt-2 text-sm text-charcoal/70 font-medium">POPIA Compliant</p>
+              <p className="mt-2 text-sm text-charcoal/70 font-medium uppercase tracking-wider">POPIA Compliant</p>
             </div>
+
             <div className="p-6">
-              <p className="text-3xl lg:text-4xl font-bold text-green-sage truncate">
+              <p className="text-2xl lg:text-3xl font-bold text-green-sage min-h-[2.5rem] flex items-center justify-center">
                 {loading ? "..." : stats?.headquarters}
               </p>
-              <p className="mt-2 text-sm text-charcoal/70 font-medium">Headquartered Hub</p>
+              <p className="mt-2 text-sm text-charcoal/70 font-medium uppercase tracking-wider">Headquartered Hub</p>
             </div>
+
             <div className="p-6">
-              <p className="text-3xl lg:text-4xl font-bold text-gray-slate truncate">
+              <p className="text-xl lg:text-2xl font-bold text-gray-slate min-h-[2.5rem] flex items-center justify-center">
                 {loading ? "..." : stats?.searchType}
               </p>
-              <p className="mt-2 text-sm text-charcoal/70 font-medium">Search Strategy</p>
+              <p className="mt-2 text-sm text-charcoal/70 font-medium uppercase tracking-wider">Search Strategy</p>
             </div>
+
             <div className="p-6">
-              <p className="text-3xl lg:text-4xl font-bold text-green-sage truncate">
+              <p className="text-xl lg:text-2xl font-bold text-green-sage min-h-[2.5rem] flex items-center justify-center">
                 {loading ? "..." : stats?.partnershipModel}
               </p>
-              <p className="mt-2 text-sm text-charcoal/70 font-medium">Operating Model</p>
+              <p className="mt-2 text-sm text-charcoal/70 font-medium uppercase tracking-wider">Operating Model</p>
             </div>
+
           </div>
         </section>
       </main>

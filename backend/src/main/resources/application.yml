@@ -1,5 +1,18 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/isolve_db}
-    username: ${DATABASE_USERNAME:isolve_admin}
-    password: ${DATABASE_PASSWORD:change_this_password}
+    # Uses environment variables in production, falls back to localhost if not set
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/isolve_db}
+    username: ${SPRING_DATASOURCE_USERNAME:isolve_admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:change_this_password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # Use 'validate' in production to prevent accidental schema changes, 'update' in local dev if needed
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:validate}
+    show-sql: ${SPRING_JPA_SHOW_SQL:true} # Set to false in production for cleaner logs and performance
+
+# CORS configuration referenced by your SecurityConfig.java
+app:
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:5173}

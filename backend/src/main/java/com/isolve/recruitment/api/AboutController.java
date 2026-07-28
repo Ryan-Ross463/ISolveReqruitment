@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/about")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*") // Allows all local frontend ports
 public class AboutController {
 
     @GetMapping("/stats")

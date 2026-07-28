@@ -1,33 +1,59 @@
+version: '3.8'
+
 services:
+  # 1. PostgreSQL Database Service
   postgres:
-    image: postgres:16.3
-    container_name: isolve-postgres
-    restart: unless-stopped
+    image: postgres:16-alpine
+    container_name: isolve_postgres
+    restart: always
     environment:
-      POSTGRES_DB: isolve_db
-      POSTGRES_USER: isolve_admin
-      POSTGRES_PASSWORD: change_this_password
+      POSTGRES_DB: ${POSTGRES_DB:-isolve_db}
+      POSTGRES_USER: ${POSTGRES_USER:-isolve_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_this_password}
     ports:
-      - "5432:5432"
+      # Expose port only if you need external GUI database tools like DBeaver/pgAdmin.
+      # For maximum security in production, remove or comment out the ports section.
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - isolve-postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
-      - isolve-network
+      - isolve_network
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -U isolve_admin"
-        ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-isolve_admin} -d ${POSTGRES_DB:-isolve_db}"]
       interval: 10s
       timeout: 5s
       retries: 5
-    security_opt:
-      - no-new-privileges:true
 
-volumes:
-  isolve-postgres-data:
+  # 2. Spring Boot Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: isolve_backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-isolve_db}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-isolve_admin}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-change_this_password}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: "false"
+      APP_CORS_ALLOWED_ORIGINS: ${APP_CORS_ALLOWED_ORIGINS:-http://localhost:5173}
+      CRM_API_URL: ${CRM_API_URL}
+      CRM_API_KEY: ${CRM_API_KEY}
+    ports:
+      - "8080:8080"
+    networks:
+      - isolve_network
 
+# Internal private network bridging Spring Boot and Postgres
 networks:
-  isolve-network:
+  isolve_network:
     driver: bridge
+
+# Persistent volume so PostgreSQL data survives container restarts
+volumes:
+  postgres_data:
+    driver: local
